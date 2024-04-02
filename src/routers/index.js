@@ -1,3 +1,4 @@
+import AuthorizationsCom from '@/components/AuthorizationsCom';
 import Layout from '@/pages/Layout';
 import Login from '@/pages/Login';
 import { createBrowserRouter } from 'react-router-dom';
@@ -9,7 +10,7 @@ const routes = createBrowserRouter([
   },
   {
     path: '/Layout',
-    element: <Layout />
+    element: <AuthorizationsCom><Layout /></AuthorizationsCom>
   },
 ])
 

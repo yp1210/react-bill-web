@@ -1,13 +1,20 @@
 import React from 'react';
 import { Button, Form, Input } from 'antd';
+import { useDispatch } from 'react-redux';
+import { fetchToken }from '@/store/moudle/user'
+import { useNavigate } from 'react-router-dom/dist';
 
 const LoginForm = () => {
 
   const [form] = Form.useForm();
+  const dispatch = useDispatch();
+  const nav = useNavigate();
 
   const submit = async () => {
     const formValue = await form.validateFields();
     console.log(formValue, 'formValue');
+    await dispatch(fetchToken(formValue));
+    nav('/layout');
   }
 
   return <div>
@@ -37,7 +44,7 @@ const LoginForm = () => {
           },
         ]}
       >
-        <Input.Password placeholder='请输入验证码' />
+        <Input placeholder='请输入验证码' />
       </Form.Item>
 
       <Form.Item>
